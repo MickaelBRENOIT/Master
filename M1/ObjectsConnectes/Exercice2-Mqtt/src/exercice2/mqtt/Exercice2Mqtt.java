@@ -46,19 +46,16 @@ public class Exercice2Mqtt {
         central.setCallback(new MqttCallback() {
             @Override
             public void connectionLost(Throwable thrwbl) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void messageArrived(String string, MqttMessage mm) throws Exception {
-                System.out.println("???>"+string);
                 String temp = new String(mm.getPayload());
                 int temperature = Integer.parseInt(temp);
                 
                 switch(string){
                     case "cuisine/thermometre/ct1":
                         if(temperature < 15){
-                            System.out.println("112313213132123123123132132131321313212311312313131");
                             message.setPayload("ON".getBytes());
                             central.publish("cuisine/radiateur/cr1", message);
                             central.publish("cuisine/radiateur/cr2", message);
@@ -70,7 +67,6 @@ public class Exercice2Mqtt {
                         break;
                         
                     case "sejour/thermometre/st1":
-                        System.out.println("zfezefrtdrdyttufututfufuyfuyfufyufuyfuyfyufyufufufuyfu");
                         tempSejour1 = temperature;
                         if(tempSejour2 != -1){
                             if((tempSejour1 + tempSejour2)/2 < 15){
@@ -84,7 +80,6 @@ public class Exercice2Mqtt {
                         break;
                         
                     case "sejour/thermometre/st2":
-                        System.out.println("azerty");
                         tempSejour2 = temperature;
                         if(tempSejour1 != -1){
                             if((tempSejour1 + tempSejour2)/2 < 15){
@@ -98,14 +93,12 @@ public class Exercice2Mqtt {
                         break;
                         
                     default:
-                        System.out.println("nique ta mère");
- 
+                        System.out.println("Erreur inconnue");
                 }
             }
 
             @Override
             public void deliveryComplete(IMqttDeliveryToken imdt) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
         central.connect();
@@ -115,7 +108,6 @@ public class Exercice2Mqtt {
         cuisineRadiateur1.setCallback(new MqttCallback() {
             @Override
             public void connectionLost(Throwable thrwbl) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
@@ -125,7 +117,6 @@ public class Exercice2Mqtt {
 
             @Override
             public void deliveryComplete(IMqttDeliveryToken imdt) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
         cuisineRadiateur1.connect();
@@ -135,7 +126,6 @@ public class Exercice2Mqtt {
         cuisineRadiateur2.setCallback(new MqttCallback() {
             @Override
             public void connectionLost(Throwable thrwbl) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
@@ -145,7 +135,6 @@ public class Exercice2Mqtt {
 
             @Override
             public void deliveryComplete(IMqttDeliveryToken imdt) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
         cuisineRadiateur2.connect();
@@ -155,7 +144,6 @@ public class Exercice2Mqtt {
         sejourRadiateur1.setCallback(new MqttCallback() {
             @Override
             public void connectionLost(Throwable thrwbl) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
@@ -165,7 +153,6 @@ public class Exercice2Mqtt {
 
             @Override
             public void deliveryComplete(IMqttDeliveryToken imdt) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
         sejourRadiateur1.connect();
