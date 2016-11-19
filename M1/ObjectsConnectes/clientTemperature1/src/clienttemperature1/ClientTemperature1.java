@@ -75,16 +75,12 @@ public class ClientTemperature1 {
             message.setPayload(Integer.toString(cT1).getBytes());
             message.setQos(qos);
             cuisineThermometre1.publish(topicPersonnal+"cuisine/thermometre/ct1", message);
-            
-            Thread.sleep(1000);
 
             sT1 = random(0, 31);
             System.out.println("random sT1 : "+sT1);
             message.setPayload(Integer.toString(sT1).getBytes());
             message.setQos(qos);
             sejourThermometre1.publish(topicPersonnal+"sejour/thermometre/st1", message);
-
-            Thread.sleep(1000);
             
             sT2 = random(0, 31);
             System.out.println("random sT2 : "+sT2);
@@ -92,7 +88,7 @@ public class ClientTemperature1 {
             message.setQos(qos);
             sejourThermometre2.publish(topicPersonnal+"sejour/thermometre/st2", message);
         
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         
         }
 
