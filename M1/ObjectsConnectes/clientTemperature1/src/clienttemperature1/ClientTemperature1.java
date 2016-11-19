@@ -70,7 +70,7 @@ public class ClientTemperature1 {
             
             System.out.println("\n i="+ i + " : \n");
             
-            cT1 = random(0, 30);
+            cT1 = random(0, 31);
             System.out.println("random cT1 : "+cT1);
             message.setPayload(Integer.toString(cT1).getBytes());
             message.setQos(qos);
@@ -78,7 +78,7 @@ public class ClientTemperature1 {
             
             Thread.sleep(1000);
 
-            sT1 = random(0, 30);
+            sT1 = random(0, 31);
             System.out.println("random sT1 : "+sT1);
             message.setPayload(Integer.toString(sT1).getBytes());
             message.setQos(qos);
@@ -86,7 +86,7 @@ public class ClientTemperature1 {
 
             Thread.sleep(1000);
             
-            sT2 = random(0, 30);
+            sT2 = random(0, 31);
             System.out.println("random sT2 : "+sT2);
             message.setPayload(Integer.toString(sT2).getBytes());
             message.setQos(qos);
