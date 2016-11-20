@@ -69,7 +69,7 @@ public class ClientPresence2 {
                 presence = "oui";
             message.setPayload(presence.getBytes());
             message.setQos(qos);
-            presenceDansLaMaison.publish(topicPersonnal+"presence", message);
+            presenceDansLaMaison.publish(topicPersonnal+"presence/detecteur/d", message);
             
             Thread.sleep(5000);
         
