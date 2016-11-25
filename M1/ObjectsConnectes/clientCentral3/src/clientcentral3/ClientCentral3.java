@@ -59,6 +59,7 @@ public class ClientCentral3 {
                 switch(string){
                     case topicPersonnal+"presence":
                         presence = var;
+                        System.out.println("\t--> "+presence);
                         break;
                         
                     case topicPersonnal+"cuisine/thermometre/ct1":
@@ -126,7 +127,7 @@ public class ClientCentral3 {
             }
         });
         central.connect(connOpts);
-        central.subscribe(topicPersonnal+"+/thermometre/+", qos);
+        central.subscribe(topicPersonnal+"+/+/+", qos);
         
         message = new MqttMessage();
     }
