@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <climits>
 
 using namespace std;
 
@@ -60,10 +61,61 @@ void convertTxtIToObj(ifstream &file){
     }
 }
 
+void findXminXmaxYminYmax(ifstream &input){
+    //ofstream output("terrainAvecCarre.obj");
+    string str;
+    int cpt=0;
+    double Xmin=LONG_MAX, Ymin=LONG_MAX, Xmax=LONG_MIN, Ymax=LONG_MIN, Zmin=LONG_MAX;
+    //if(output.is_open()){
+        while(getline(input, str, ' '))
+        {
+                      
+            cpt = cpt + 1;
+            cout << cpt << " + " << str << '\n'; 
+            
+            //colonne des X
+            double temp = atof(str.c_str());
+            //sscanf_s(str.c_str, " caractère l'espace ", &a, &b...)
+            if(cpt==1){
+                //cout << "x:" << str << "\n";
+                if(temp<Xmin)
+                    Xmin = temp;
+                if(temp>Xmax)
+                    Xmax = temp;
+            }else if(cpt==2){
+                //cout << "y:" << str << "\n";
+                if(temp<Ymin)
+                    Ymin = temp;
+                if(temp>Ymax)
+                    Ymax = temp;
+            }else if(cpt==3){
+                //cout << "z:" << str << "\n";
+                if(temp<Zmin)
+                    Zmin = temp;
+            }else if (cpt>=6){
+                cpt=0;
+                str.clear();
+            }       
+        }
+    
+    cout << "XMin=" << Xmin << "\n";
+    cout << "XMax=" << Xmax << "\n";
+    
+    cout << "YMin=" << Ymin << "\n";
+    cout << "YMax=" << Ymax << "\n";
+    
+    cout << "ZMin=" << Zmin << "\n";
+    
+    
+    /*}else{
+        cout << "Le fichier n'a pas pu être ouvert";
+    }*/
+}
+
 int main(int argc, char** argv) {
     ifstream file("test.txt");
+    findXminXmaxYminYmax(file);
     //display(file);
-    convertTxtIToObj(file);
     
 }
 
