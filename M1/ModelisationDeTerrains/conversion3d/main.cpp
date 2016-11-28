@@ -17,12 +17,53 @@
 
 using namespace std;
 
-int main(int argc, char** argv) {
-    ifstream file("terrain.txt");
+void display(ifstream &file){
     string str; 
-    while (getline(file, str, ','))
+    while (getline(file, str, ' '))
     {
         cout << str << "\t";
     }
+}
+
+void convertTxtToObj(ifstream &input){
+    ofstream output("terrain.obj");
+    string str;
+    if(output.is_open()){
+        while(getline(input, str)){
+            output << "v " << str << "\n";
+        }
+    }else{
+        cout << "Le fichier n'a pas pu être ouvert";
+    }
+}
+
+void convertTxtIToObj(ifstream &file){
+    ofstream output("terrainI.obj");
+    string str; 
+    int cpt=0;
+    if(output.is_open()){
+        while(getline(file, str))
+        {
+            output << "v ";
+            for(int i=0; i<str.length(); i++){
+                if(cpt<4){
+                    if (isspace(str.at(i)))
+                        ++cpt;
+                    output << str.at(i);
+                }
+            }
+            cpt=0;
+            output << "\n";
+        }
+    }else{
+        cout << "Le fichier n'a pas pu être ouvert";
+    }
+}
+
+int main(int argc, char** argv) {
+    ifstream file("test.txt");
+    //display(file);
+    convertTxtIToObj(file);
+    
 }
 
