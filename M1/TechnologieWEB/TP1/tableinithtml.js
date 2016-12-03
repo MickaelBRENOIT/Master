@@ -8,8 +8,8 @@ function ecrireTableMultiplication(n, nblignes) {
 }
 
 (function() {
-function init(event) {
+function initialize() {
   ecrireTableMultiplication(5,12);
 }
-window.addEventListener("load", init, false);
+window.addEventListener("load", initialize, false);
 })();
