@@ -23,6 +23,9 @@ var Controller = Controller || {};
         if(event.target.id === "bresult"){
             displayResults();
         }
+        else if(event.target.id === "bverify"){
+            verifyAnswers();
+        }
     }
     
     //fait en sorte que la vue et les données soient ré-initilisées avec la table de multiplication du numéro sélectionné
@@ -31,6 +34,10 @@ var Controller = Controller || {};
         var selectedValue = View.selectedTableNumber();
         View.writeTableNumber(selectedValue);
         Data.changeTableNumber(selectedValue);
+        View.eraseResult();
+        //lorsque la nouvelle table est créée on affiche
+        View.displayMessage("Rentrez les valeurs des multiplications");
+        //View.eraseCheck();
     }
     
     //
@@ -42,6 +49,13 @@ var Controller = Controller || {};
     function displayResults(){
         View.displayResults(Data.tableValues());
         View.displayMessage("Apprenez bien ces valeurs");
+    }
+    
+    //vérifie la validité des réponses dans les champs texte
+    function verifyAnswers(){
+        if(View.checkAnswersValidity()){
+            View.checkAnswersCorrectness(Data.tableValues());
+        }
     }
     
     exports.nouvelleTable = nouvelleTable;
