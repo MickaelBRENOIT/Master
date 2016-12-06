@@ -29,10 +29,11 @@ var Data = Data || {};
         this._nbresults = nbresults;
         this._tableNumber = tableNumber;
         this._values = [];
-        for(int i=1; i < nbresults+1; i++){
+        for(var i=1; i < nbresults+1; i++){
             this._values.push(i*this._tableNumber);
         }
-        
+        //efface les résultats lorsqu'une nouvelle table est appelée.
+        View.eraseResult();
         /*if (!(this instanceof MultiplicationTable)) {
             return new MultiplicationTable (nbresults, tableNumber);
         }*/
