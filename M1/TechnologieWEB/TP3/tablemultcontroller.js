@@ -41,6 +41,7 @@ var Controller = Controller || {};
     //affiche les résultats de la table courante dans les champs texte mis en lecture seule
     function displayResults(){
         View.displayResults(Data.tableValues());
+        View.displayMessage("Apprenez bien ces valeurs");
     }
     
     exports.nouvelleTable = nouvelleTable;

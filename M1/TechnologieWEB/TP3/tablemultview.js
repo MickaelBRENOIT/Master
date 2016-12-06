@@ -59,6 +59,11 @@ var View = View || {};
         }
     }
     
+    //affiche le message "msg" dans ce paragraphe
+    function displayMessage(msg){
+        document.getElementById("resultmsg").textContent = msg;
+    }
+    
     window.addEventListener("load", onLoad, false);
     window.addEventListener("unload", unLoad, false);
     
@@ -67,5 +72,6 @@ var View = View || {};
     exports.selectedTableNumber = selectedTableNumber;
     exports.displayResults = displayResults;
     exports.eraseResult = eraseResult;
+    exports.displayMessage = displayMessage;
     
 })(View);
