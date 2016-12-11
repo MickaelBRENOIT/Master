@@ -66,7 +66,7 @@ void convertTxtIToObj(char* f){
 }
 
 void findXminXmaxYminYmax(char* in){
-	ifstream input(in);
+    ifstream input(in);
     ofstream output;
     string str;
     int cpt=0;
@@ -89,39 +89,39 @@ void findXminXmaxYminYmax(char* in){
 		}
 	}
 	
-	input.close();
-	
-	output.open(in, ios::app);
-	
-	output << Xmin << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
-	output << Xmax << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
-	output << Xmax << " " << Ymax << " " << Zmin << " 0 0 0" << endl;
-	output << Xmin << " " << Ymax << " " << Zmin << " 0 0 0" << endl;
-	
-	output.close();
-	
-	convertTxtToObj(in);
-	
-	cout << "XMin=" << Xmin << "\n";
-        cout << "XMax=" << Xmax << "\n";
-        cout << "YMin=" << Ymin << "\n";
-        cout << "YMax=" << Ymax << "\n";
-        cout << "ZMin=" << Zmin << "\n";
-    
+    input.close();
+
+    output.open(in, ios::app);
+
+    output << Xmin << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
+    output << Xmax << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
+    output << Xmax << " " << Ymax << " " << Zmin << " 0 0 0" << endl;
+    output << Xmin << " " << Ymax << " " << Zmin << " 0 0 0" << endl;
+
+    output.close();
+
+    convertTxtToObj(in);
+
+    cout << "XMin=" << Xmin << "\n";
+    cout << "XMax=" << Xmax << "\n";
+    cout << "YMin=" << Ymin << "\n";
+    cout << "YMax=" << Ymax << "\n";
+    cout << "ZMin=" << Zmin << "\n";
+
     Sleep(5000);
-    
+
     ofstream face;
-    
+
     face.open("SDDv2.obj", ios::app);
-    
+
     output << "f " << "-4 " << "-3 " << "-2 " << "-1 ";
-    
+
     /*output << Xmin << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
-	output << Xmax << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
-	output << Xmax << " " << Ymax << " " << Zmin << " 0 0 0" << endl;
-	output << Xmin << " " << Ymax << " " << Zmin << " 0 0 0" << endl;*/
-	
-	face.close();
+        output << Xmax << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
+        output << Xmax << " " << Ymax << " " << Zmin << " 0 0 0" << endl;
+        output << Xmin << " " << Ymax << " " << Zmin << " 0 0 0" << endl;*/
+
+    face.close();
     
 		
 }
