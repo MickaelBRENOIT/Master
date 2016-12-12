@@ -65,14 +65,14 @@ public class REST01Serveur {
             else
                 etatDeFonctionnement = false;
             System.out.println("Nouvelle temperature courante: "+tempCourante);
-            return "OK";
+            return "OK - temp courante";
         });
         
         //Requête venant du smarphone pour changer la température de chauffage. 
         //Le serveur doit changer la variable correspondant à l’état de fonctionnement
         //du radiateur en fonction de le température courante et decette nouvelle
         //température de chauffage.
-        post("/smarphone", (Request request, Response response) -> {
+        post("/bourbon", (Request request, Response response) -> {
             String val=request.queryParams("Schauffage");
             tempChauffage=Integer.parseInt(val);
             if(tempCourante < tempChauffage)
@@ -80,7 +80,7 @@ public class REST01Serveur {
             else
                 etatDeFonctionnement = false;
             System.out.println("Nouvelle temperature de chauffage: "+tempChauffage);
-            return "OK";
+            return "OK - temp chauffage";
         });
     }
 }

@@ -46,21 +46,21 @@ public class REST04Smartphone {
         Scanner in = new Scanner(System.in);
         System.out.println("Entrer la nouvelle temperature de chauffage : ");
         int temperatureChauffage=in.nextInt();
-        // Definir l'adresse URL de la requete
-        String charset = "UTF-8";  // Or in Java 7 and later, use the constant: java.nio.charset.StandardCharsets.UTF_8.name()
-        String url = "http://localhost:4567/smartphone";
+        String charset = "UTF-8";
+        String url = "http://localhost:4567/bourbon";
         String query = String.format("Schauffage=%s", temperatureChauffage);
         URLConnection connection = new URL(url).openConnection();
-        connection.setDoOutput(true); // Triggers POST.
+        connection.setDoOutput(true);
         connection.setRequestProperty("Accept-Charset", charset);
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
-
+        
         try (OutputStream output = connection.getOutputStream()) {
             output.write(query.getBytes(charset));
         }
-
+        
+        // début problème
         InputStream response = connection.getInputStream();
-        // Obtenir le resultat de la requete
+        // fin problème
         try (Scanner scanner = new Scanner(response)) {
             String responseBody = scanner.useDelimiter("\\A").next();
             System.out.println("\tReponse Body | temperature chauffage : "+responseBody);
