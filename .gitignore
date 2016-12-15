@@ -27,3 +27,9 @@
 /M1/ObjectsConnectes/Exam04Smartphone/nbproject/private/
 /M1/ObjectsConnectes/Exam04Smartphone/build/
 /M1/ObjectsConnectes/Exam05SystemeDeControle/nbproject/private/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
