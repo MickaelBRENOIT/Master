@@ -92,7 +92,7 @@ void findXminXmaxYminYmax(char* in){
     input.close();
 
     output.open(in, ios::app);
-
+    output << endl;
     output << Xmin << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
     output << Xmax << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
     output << Xmax << " " << Ymax << " " << Zmin << " 0 0 0" << endl;
@@ -108,18 +108,12 @@ void findXminXmaxYminYmax(char* in){
     cout << "YMax=" << Ymax << "\n";
     cout << "ZMin=" << Zmin << "\n";
 
-    Sleep(5000);
+    //Sleep(5000);
 
     ofstream face;
-
     face.open("SDDv2.obj", ios::app);
 
-    output << "f " << "-4 " << "-3 " << "-2 " << "-1 ";
-
-    /*output << Xmin << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
-        output << Xmax << " " << Ymin << " " << Zmin << " 0 0 0" << endl;
-        output << Xmax << " " << Ymax << " " << Zmin << " 0 0 0" << endl;
-        output << Xmin << " " << Ymax << " " << Zmin << " 0 0 0" << endl;*/
+    face << "f " << "-4 " << "-3 " << "-2 " << "-1 ";
 
     face.close();
     
@@ -132,10 +126,6 @@ void findXminXmaxYminYmax(char* in){
     }*/
 
 int main(int argc, char** argv) {
-    findXminXmaxYminYmax("SDDv2.txt");
-    //display("SDDv2.txt");
-    //convertTxtToObj("SDDv2.txt");
-    //convertTxtIToObj(file);
-    
+    findXminXmaxYminYmax("seance2.txt");
 }
 
