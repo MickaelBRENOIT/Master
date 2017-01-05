@@ -10,6 +10,7 @@
  *
  * Created on 25 novembre 2016, 10:28
  */
+#include <math.h>
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -19,6 +20,7 @@
 
 using namespace std;
 
+//Début - programmes des séances 2 et 3
 void display(char* f){
 	ifstream file(f);
     string str; 
@@ -30,7 +32,7 @@ void display(char* f){
 
 void convertTxtToObj(char* in){
 	ifstream input(in);
-    ofstream output("SDDv2.obj");
+    ofstream output("seance5.obj");
     string str;
     if(output.is_open()){
         while(getline(input, str)){
@@ -64,7 +66,9 @@ void convertTxtIToObj(char* f){
         cout << "Le fichier n'a pas pu être ouvert";
     }
 }
+//Fin - Programme des séances 2 et 3
 
+//Programme de la séance 4
 void findXminXmaxYminYmax(char* in){
     ifstream input(in);
     ofstream output;
@@ -108,24 +112,73 @@ void findXminXmaxYminYmax(char* in){
     cout << "YMax=" << Ymax << "\n";
     cout << "ZMin=" << Zmin << "\n";
 
-    //Sleep(5000);
-
     ofstream face;
     face.open("SDDv2.obj", ios::app);
 
     face << "f " << "-4 " << "-3 " << "-2 " << "-1 ";
 
     face.close();
-    
-		
+    		
 }
+
+//Sujet séance 5 -Le programme pour parcourir le damier avec des quadrilatères ayant des altitudes augmentantes (générant le fichier OBJ des quadrilatères incluant le nuage de points)
+void altitudesAugmentantes(char* in){
+    ifstream input(in);
+    double Xmin=LONG_MAX, Ymin=LONG_MAX, Xmax=LONG_MIN, Ymax=LONG_MIN, Zmin=LONG_MAX, tempX, tempY, tempZ, translation, profondeur;
+    double x,y,z,r,g,b;
+    if(input.is_open()){
+    	while(!input.eof()){
+    		input >> x >> y >> z >> r >> g >> b;
+    		if(x<Xmin)
+    			Xmin = x;
+    		if(x>Xmax)
+    			Xmax = x;
+    		if(y<Ymin)
+    			Ymin = y;
+    		if(y>Ymax)
+    			Ymax = y;
+    		if(z<Zmin)
+    			Zmin = z;
+		}
+	}
+	
+    input.close();
     
+    convertTxtToObj(in);
     
-    /*}else{
-        cout << "Le fichier n'a pas pu être ouvert";
-    }*/
+    tempX = Xmin; tempY = Ymin; tempZ = Zmin;
+    translation = fabs(fabs(Xmax)- fabs(Xmin)) / 10;
+    profondeur = translation / 20;
+
+    ofstream face;
+    face.open("seance5.obj", ios::app);
+    
+    while(tempY < Ymax)
+    {
+        while(tempX < Xmax)
+        {
+            face << "v " << tempX << " " << tempY << " " << tempZ << endl;
+            face << "v " << tempX + translation << " " << tempY << " " << tempZ << endl;
+            face << "v " << tempX + translation << " " << tempY + translation<< " " << tempZ << endl;
+            face << "v " << tempX << " " << tempY + translation << " " << tempZ << endl;
+            
+            face << "f -4 -3 -2 -1" << endl;
+            
+            tempZ += profondeur;
+            tempX += translation;
+        }
+        tempX = Xmin;
+        tempY += translation;
+    }
+    
+    face.close();
+    		
+}
+
+//Sujet séance 5 - Le programme superposant au nuage les quadrilatères avec des altitudes moyennes (générant le fichier OBJ des quadrilatères incluant le nuage de points)
+
 
 int main(int argc, char** argv) {
-    findXminXmaxYminYmax("seance2.txt");
+    altitudesAugmentantes("seance5.txt");
 }
 
