@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/mickael_brenoit_seance_3.o
+	${OBJECTDIR}/mickael_brenoit_seance_6.o
 
 
 # C Compiler Flags
@@ -62,10 +62,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/conversion3d.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/conversion3d ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/mickael_brenoit_seance_3.o: mickael_brenoit_seance_3.cpp 
+${OBJECTDIR}/mickael_brenoit_seance_6.o: mickael_brenoit_seance_6.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mickael_brenoit_seance_3.o mickael_brenoit_seance_3.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mickael_brenoit_seance_6.o mickael_brenoit_seance_6.cpp
 
 # Subprojects
 .build-subprojects:
