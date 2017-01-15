@@ -33,3 +33,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/M1/Java/DonneesCaracteres/nbproject/private/
