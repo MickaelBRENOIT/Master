@@ -31,12 +31,10 @@ public class DonneesCaracteres {
         }*/
         
         try(DataInputStream in = new DataInputStream(new FileInputStream("data")); FileWriter out = new FileWriter(new File("double2"))){
-            int c;
-            String s = "";
-            while((c = in.read()) != -1){
-                s += (char) c;
+            double d;
+            while (in.available() > 0){
+                out.write(Double.toString(in.readDouble()) + "\n");
             }
-            out.write(s);
         }
         
     }
