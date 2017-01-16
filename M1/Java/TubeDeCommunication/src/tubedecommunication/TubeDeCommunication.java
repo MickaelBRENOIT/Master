@@ -23,26 +23,18 @@ public class TubeDeCommunication {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        // PREMIERE PARTIE
-        DataInputStream in = new DataInputStream(new FileInputStream("doubles"));
-        FrameAffichage fa = new FrameAffichage(in);
-        
-        //SECONDE PARTIE
-        DataOutputStream out = new DataOutputStream(new FileOutputStream("data"));
-        FrameSaisie fs = new FrameSaisie(out);
         
         //TROISIEME PARTIE - http://docs.oracle.com/javase/7/docs/api/java/io/PipedInputStream.html 
         PipedOutputStream pout = new PipedOutputStream();
-        PipedInputStream pin = new PipedInputStream();
+        PipedInputStream pin = new PipedInputStream(pout);
         
-        try{
-            pin.connect(pout);
-            pout.write(fs.getValue().getBytes());
-            System.out.println(pin.read());
-            
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        // PREMIERE PARTIE
+        DataInputStream in = new DataInputStream(pin);
+        FrameAffichage fa = new FrameAffichage(in);
+        
+        //SECONDE PARTIE
+        DataOutputStream out = new DataOutputStream(pout);
+        FrameSaisie fs = new FrameSaisie(out);
         
     }
     
